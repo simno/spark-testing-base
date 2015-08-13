@@ -85,7 +85,8 @@ trait StreamingSuiteBase extends FunSuite with BeforeAndAfterAll with Logging
     */
   def createTestInputStream[T: ClassTag](sc: SparkContext, ssc_ : TestStreamingContext,
     input: Seq[Seq[T]]) = {
-    val rdds: Queue[RDD[T]] = (new Queue() ++= input.map(elems => sc.parallelize(elems)))
+    val rdds: Queue[RDD[T]] = (new Queue() ++= input.map(elems =>
+      sc.parallelize(elems, numInputPartitions)))
     val defaultRDD: RDD[T] = sc.parallelize(Seq[T]())
     ssc_.queueStream[T](rdds, oneAtATime = true, defaultRDD = defaultRDD)
   }
