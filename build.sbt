@@ -4,7 +4,7 @@ name := "spark-testing-base"
 
 publishMavenStyle := true
 
-version := "0.1.1"
+version := "1.4.1_0.1.1"
 
 scalaVersion := "2.10.4"
 
