@@ -4,7 +4,7 @@ name := "spark-testing-base"
 
 publishMavenStyle := true
 
-version := "0.2.1"
+version := "0.2.2"
 
 scalaVersion := "2.10.4"
 
@@ -16,7 +16,7 @@ spName := "holdenk/spark-testing-base"
 
 sparkVersion := "1.5.0"
 
-sparkComponents ++= Seq("core", "streaming", "sql", "catalyst", "hive", "streaming-kafka", "yarn")
+sparkComponents ++= Seq("core", "streaming", "sql", "catalyst", "streaming-kafka", "yarn")
 
 parallelExecution in Test := false
 fork := true

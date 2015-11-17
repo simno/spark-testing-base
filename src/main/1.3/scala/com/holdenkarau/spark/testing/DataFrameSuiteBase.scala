@@ -22,11 +22,11 @@ import scala.util.hashing.MurmurHash3
 
 import org.apache.spark.rdd.RDD
 import org.apache.spark.sql._
-import org.apache.spark.sql.hive._
 import org.apache.spark.sql.types.StructType
 
 import org.scalatest.BeforeAndAfterAll
 import org.scalatest.FunSuite
+
 
 /**
  * :: Experimental ::
@@ -35,13 +35,13 @@ import org.scalatest.FunSuite
 trait DataFrameSuiteBase extends FunSuite with BeforeAndAfterAll
     with SharedSparkContext {
   val maxCount = 10
-  @transient private var _sqlContext: HiveContext = _
+  @transient private var _sqlContext: SQLContext = _
 
-  def sqlContext: HiveContext = _sqlContext
+  def sqlContext: SQLContext = _sqlContext
 
   override def beforeAll() {
     super.beforeAll()
-    _sqlContext = new HiveContext(sc)
+    _sqlContext = new SQLContext(sc)
   }
 
   override def afterAll() {
