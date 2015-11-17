@@ -17,11 +17,11 @@
 
 package com.holdenkarau.spark.testing
 
+import org.apache.spark.sql.{Row, DataFrame, SQLContext}
+
 import scala.math.abs
-import scala.util.hashing.MurmurHash3
 
 import org.apache.spark.rdd.RDD
-import org.apache.spark.sql._
 import org.apache.spark.sql.types.StructType
 
 import org.scalatest.BeforeAndAfterAll
@@ -41,7 +41,7 @@ trait DataFrameSuiteBase extends FunSuite with BeforeAndAfterAll
 
   override def beforeAll() {
     super.beforeAll()
-    _sqlContext = new SQLContext(sc)
+    _sqlContext = SQLContext.getOrCreate(sc)
   }
 
   override def afterAll() {
